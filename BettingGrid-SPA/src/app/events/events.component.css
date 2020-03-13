@@ -1,0 +1,46 @@
+.title th {
+    border: 1px solid black;
+}
+
+.content th:not(:last-child):not(:nth-last-child(2)) {
+    border: 1px solid black;
+}
+
+.content th:last-child:nth-last-child(2) {
+    background-color: none;
+}
+
+.non-editable .event-details:nth-child(even) th:not(:last-child):not(:nth-last-child(2)) {
+    background-color: #f0f8ff;
+}
+
+.non-editable .event-details:nth-child(odd) th:not(:last-child):not(:nth-last-child(2)) {
+    background-color: #f0fff0;
+}
+
+.non-editable .passed-event-date th:not(:last-child):not(:nth-last-child(2)) {
+    background-color: #ffa07a;
+}
+
+.non-editable .btn-delete,
+.non-editable .btn-edit,
+.non-editable .btn-add {
+    visibility: hidden;
+}
+
+.non-editable tr th:first-child {
+    visibility: hidden;
+}
+
+.non-editable .event-details {
+    background-color: none;
+}
+
+.btn-add {
+    margin-top: 15px;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}

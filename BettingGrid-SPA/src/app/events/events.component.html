@@ -1,0 +1,43 @@
+<div class="container">
+  <div id="wrapper" class="{{editMode}}">
+    <div class="btn-wrapper">
+      <button type="button" (click)="onModeButtonClick()">{{modeButtonValue}}</button>
+    </div>
+    <table>
+      <thead>
+        <tr class="title">
+          <th>EventID</th>
+          <th>EventName</th>
+          <th>HomeSideOdds</th>
+          <th>DrawOdds</th>
+          <th>AwaySideOdds</th>
+          <th>EventStartDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+          (click)="onOddClick($event, event.id)"
+          *ngFor="let event of events"
+          class="{{isEventPassed(event)}} content">
+          <th>{{event.id}}</th>
+          <th attr.contenteditable="{{contentEditable}}"
+              (blur)="onBlur(event, $event)">{{event.eventName}}</th>
+          <th attr.contenteditable="{{contentEditable}}"
+              (blur)="event.homeSideOdds = $event.target.innerText"
+              class="printable home-side-odds">{{event.homeSideOdds | number:'1.2-2'}}</th>
+          <th attr.contenteditable="{{contentEditable}}"
+              (blur)="event.drawOdds = $event.target.innerText"
+              class="printable draw-odds">{{event.drawOdds | number:'1.2-2'}}</th>
+          <th attr.contenteditable="{{contentEditable}}"
+              (blur)="event.awaySideOdds = $event.target.innerText"
+              class="printable away-side-odds">{{event.awaySideOdds | number:'1.2-2'}}</th>
+          <th attr.contenteditable="{{contentEditable}}"
+              (blur)="event.startDate = $event.target.innerText">{{event.startDate | date: 'MM/dd/yyyy HH:mm'}}</th>
+          <th><button type="button" class="btn-delete" (click)="deleteEvent(event.id)">Delete</button></th>
+          <th><button type="button" class="btn-edit" (click)="onSaveClick(event)">Save</button></th>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn-add" (click)="addNewEvent()">Add new</button>
+  </div>
+</div>
